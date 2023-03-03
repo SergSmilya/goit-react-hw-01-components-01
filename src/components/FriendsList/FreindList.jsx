@@ -1,13 +1,21 @@
-export function FriendList({items}) {
-    return (
-        <ul className="friend-list">
-            {items.map(({avatar, name, isOnline, id}) => {
-                return (<li key={id} className="item">
-                    <span className="status">{isOnline}</span>
-                    <img className="avatar" src={avatar} alt={name} width="48" />
-                    <p className="name">{name}</p>
-                    </li>)
-            })}
-        </ul>   
-    )
+import PropTypes from "prop-types";
+import { FriendItem } from "../FriendItem/FriendItem";
+import { List } from "./FriendList.styled";
+
+export function FriendList({ items }) {
+  return (
+    <List>
+      {items.map(({ id, isOnline, name, avatar }) => (
+        <FriendItem key={id} isOnline={isOnline} name={name} avatar={avatar} />
+      ))}
+    </List>
+  );
 }
+
+FriendList.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ),
+};
