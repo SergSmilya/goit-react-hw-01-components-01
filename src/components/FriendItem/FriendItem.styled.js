@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import styled from "styled-components";
 
 export const Item = styled.li`
@@ -7,22 +6,10 @@ export const Item = styled.li`
   justify-content: center;
   margin: 0 auto;
   border-radius: 12px;
-
   width: 200px;
   height: 90px;
   background-color: #fff;
 `;
-// export const Status = styled.span.attrs((props) => ({}))`
-//   &::before {
-//     content: "";
-//     display: block;
-//     width: 20px;
-//     height: 20px;
-//     background-color: green;
-//     border-radius: 50%;
-//     margin-right: 8px;
-//   }
-// `;
 
 export const Status = styled.span`
   &::before {
@@ -30,7 +17,7 @@ export const Status = styled.span`
     display: block;
     width: 20px;
     height: 20px;
-    background-color: green;
+    background-color: ${({ bool }) => (bool ? "green" : "red")};
     border-radius: 50%;
     margin-right: 8px;
   }
